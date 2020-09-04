@@ -13,7 +13,9 @@
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
     "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
-    "test:unit": "jest"
+    "test": "yarn test:unit && yarn test:functional",
+    "test:unit": "jest",
+    "test:functional": "jest --projects ./test --runInBand"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -36,6 +38,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@overnightjs/core": "^1.7.4",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "config": "^3.3.1",

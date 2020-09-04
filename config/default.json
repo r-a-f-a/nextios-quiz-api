@@ -1,6 +1,9 @@
 {
     "App": {
         "port": 3000,
+        "auth": {
+            "key": "a"
+        },
         "database": {
             "mongoUrl": "mongodb://177.153.231.34/nextios"
         },
