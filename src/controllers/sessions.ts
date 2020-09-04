@@ -2,25 +2,26 @@ import { Controller, Get, Post, Put, Delete, ClassMiddleware } from '@overnightj
 import { Request, Response, NextFunction } from 'express';
 import { authMiddleware } from '@src/middlewares/auth';
 import { Session } from '@src/models/sessions';
+import GeneratorService from '@src/services/generator';
 
 @Controller('sessions')
 @ClassMiddleware(authMiddleware)
 export class SessionController {
-    @Get('')
-    public async list(req: Request, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const filter = req.payload.filter ? req.payload.filter : {};
-            const result = await Session.find(filter);
-            res.status(200).send({ code: 200, result: result});
-        } catch (error) {
-            res.status?.(401).send({ code: 401, error: error.message });
-        }
-    }
+    // @Get('')
+    // public async list(req: Request, res: Response, next: NextFunction): Promise<void> {
+    //     try {
+    //         const filter = req.payload.filter ? req.payload.filter : {};
+    //         const result = await Session.find(filter);
+    //         res.status(200).send({ code: 200, result: result});
+    //     } catch (error) {
+    //         res.status?.(401).send({ code: 401, error: error.message });
+    //     }
+    // }
 
-    @Get(':id')
+    @Get(':userId')
     public async show(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const result = await Session.findById(req.params.id);
+            const result = await Session.findOne({ userId: req.params.userId });
             res.status(200).send({ code: 200, result: result});
         } catch (error) {
             res.status?.(401).send({ code: 401, error: error.message });
@@ -31,7 +32,7 @@ export class SessionController {
     public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const newSession = {
-                verificationCode: 123456, // create
+                verificationCode: GeneratorService.generateToken(),
                 userId: req.payload.userId
             }
             const session = new Session(newSession);

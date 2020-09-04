@@ -2,7 +2,6 @@ import mongoose, { Document, Model, Collection } from 'mongoose';
 
 export interface Session {
   _id?: string;
-  verificationCode: number;
   userId: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
@@ -11,7 +10,6 @@ export interface Session {
 
 const schema = new mongoose.Schema(
   {
-    verificationCode: { type: Number, required: true, unique: true },
     userId: { type: mongoose.Types.ObjectId, required: true, ref: 'users'},
     status: { type: Boolean, required: true, default: true }
   },

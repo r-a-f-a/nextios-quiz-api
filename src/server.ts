@@ -4,9 +4,7 @@ import bodyParser from 'body-parser';
 import { Application } from 'express';
 import * as database from './database';
 
-import { AuthController } from '@src/controllers/auth';
 import { QuestionController } from '@src/controllers/questions';
-import { SessionController } from '@src/controllers/sessions';
 import { UsersController } from './controllers/users';
 
 export class SetupServer extends Server {
@@ -25,15 +23,11 @@ export class SetupServer extends Server {
     }
 
     private setupControllers(): void {
-        const authController = new AuthController();
         const questionController = new QuestionController();
-        const sessionController = new SessionController();
         const usersController = new UsersController();
 
         this.addControllers([
-            authController,
             questionController,
-            sessionController,
             usersController
         ]);
     }

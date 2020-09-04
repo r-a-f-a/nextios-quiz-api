@@ -3,6 +3,7 @@ import mongoose, { Document, Model, Collection } from 'mongoose';
 export interface User {
   _id?: string;
   email: string;
+  verificationCode: string;
   createdAt: Date;
   updatedAt: Date;
   status: boolean;
@@ -11,6 +12,7 @@ export interface User {
 const schema = new mongoose.Schema(
   {
     email: { type: String, required: true, unique: true },
+    verificationCode: { type: String, required: true },
     status: { type: Boolean, required: true, default: true }
   },
   {
