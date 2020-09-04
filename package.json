@@ -26,6 +26,7 @@
     "@types/module-alias": "^2.0.0",
     "@types/mongoose": "^5.7.36",
     "@types/node": "^14.6.0",
+    "@types/nodemailer": "^6.4.0",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^3.9.1",
     "@typescript-eslint/parser": "^3.9.1",
@@ -46,7 +47,8 @@
     "generate-password": "^1.5.1",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
-    "mongoose": "^5.10.2"
+    "mongoose": "^5.10.2",
+    "nodemailer": "^6.4.11"
   },
   "_moduleAlias": {
     "@src": "./src",

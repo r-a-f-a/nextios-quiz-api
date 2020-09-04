@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { User } from '@src/models/users';
 import { authMiddleware } from '@src/middlewares/auth';
 import GeneratorService from '@src/services/generator';
+import MailService from '@src/services/mail';
 
 @Controller('users')
 @ClassMiddleware(authMiddleware)
@@ -27,7 +28,13 @@ export class UsersController {
             };
             const user = new User(newUser);
             const result = await user.save();
-            // enviar para o e-mail
+            const mail = new MailService();
+            await mail.send({
+                from: "m.macedomarques@gmail.com",
+                to: req.payload.email,
+                subject: "Quiz NEXTIOS: código de verificação",
+                html: `${newUser.verificationCode}`
+            });
             res.status(201).send({ code: 201, result: result });
         } catch (error) {
             res.status?.(401).send({ code: 401, error: error.message });
