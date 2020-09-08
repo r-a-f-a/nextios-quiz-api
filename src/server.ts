@@ -3,6 +3,7 @@ import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
 import { Application } from 'express';
 import * as database from './database';
+import cors  from 'cors';
 
 import { QuestionController } from '@src/controllers/questions';
 import { UsersController } from './controllers/users';
@@ -19,6 +20,7 @@ export class SetupServer extends Server {
     }
 
     private setupExpress(): void {
+        this.app.use(cors());
         this.app.use(bodyParser.json());
     }
 
