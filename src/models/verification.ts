@@ -13,7 +13,7 @@ const schema = new mongoose.Schema(
   {
     code: { type: String, required: true },
     userId: { type: mongoose.Types.ObjectId, required: true },
-    verificated: { type: Boolean, required: true, default: true }
+    verificated: { type: Boolean, default: false }
   },
   {
     timestamps: true,

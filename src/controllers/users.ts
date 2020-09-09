@@ -5,7 +5,6 @@ import { Verification } from '@src/models/verification';
 import { authMiddleware } from '@src/middlewares/auth';
 import GeneratorService from '@src/services/generator';
 import MailService from '@src/services/mail';
-import { DecodedPayload } from '@src/services/auth';
 
 @Controller('users')
 @ClassMiddleware(authMiddleware)
@@ -94,8 +93,9 @@ export class UsersController {
         try {
             const user = await User.findById(req.payload.userId);
             if (!user) res.status(400).send({ code: 400, error: 'USER_NOT_FOUND' });
-            const verification = await Verification.findOne({ userId: req.payload.userId, code: req.payload.code } );
+            const verification = await Verification.findOne({ userId: req.payload.userId, code: req.payload.code, verificated: false } );
             if (!verification) res.status(400).send({ code: 400, error: 'CODE_VALIDATION_DENIED' });
+            const updated = await Verification.findByIdAndUpdate(verification?.id, { verificated: true });
             res.status(200).send({ code: 200, result: true });
         } catch (error) {
             console.log('ERROR', error);
