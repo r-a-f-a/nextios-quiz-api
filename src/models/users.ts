@@ -1,7 +1,7 @@
 import mongoose, { Document, Model, Collection } from 'mongoose';
 
 export interface User {
-  _id?: string;
+  _id?: mongoose.Types.ObjectId;
   email: string;
   verificationCode: string;
   createdAt: Date;
@@ -12,7 +12,6 @@ export interface User {
 const schema = new mongoose.Schema(
   {
     email: { type: String, required: true, unique: true },
-    verificationCode: { type: String, required: true },
     status: { type: Boolean, required: true, default: true }
   },
   {

@@ -10,7 +10,7 @@ export interface DecodedPayload {
   status?: boolean;
   userId?: mongoose.Types.ObjectId;
   filter?: object;
-  verificationCode?: string;
+  code?: string;
 }
 
 export default class AuthService {
