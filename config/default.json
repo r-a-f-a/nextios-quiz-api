@@ -8,10 +8,10 @@
             "mongoUrl": "mongodb://177.153.231.34/nextios"
         },
         "smtp": {
-            "host": "smtp.gmail.com",
+            "host": "smtplw.com.br",
             "port": 587,
-            "user": "m.macedomarques@gmail.com",
-            "password": "MchL!@7717"
+            "user": "backofficeteste",
+            "password": "PedQuKCo5478"
         },
         "resources": {}
     }

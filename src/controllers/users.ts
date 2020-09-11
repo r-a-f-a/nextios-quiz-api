@@ -76,7 +76,7 @@ export class UsersController {
             if (!result) res.status(500).send({ code: 500 });
             const mail = new MailService();
             await mail.send({
-                from: "m.macedomarques@gmail.com",
+                from: "comunicacaointerna@locaweb.com.br",
                 to: user?.email,
                 subject: "Quiz NEXTIOS: código de verificação",
                 html: `${code}`
