@@ -21,6 +21,8 @@ const schema = new mongoose.Schema(
         status: Boolean
     },
     {
+        timestamps: true,
+        collection: 'questions',
         toJSON: {
             transform: (_, ret): void => {
                 ret.id = ret._id;

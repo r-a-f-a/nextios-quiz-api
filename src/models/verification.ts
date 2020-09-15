@@ -17,7 +17,7 @@ const schema = new mongoose.Schema(
   },
   {
     timestamps: true,
-    collection: 'verification',
+    collection: 'verifications',
     toJSON: {
       transform: (_, ret): void => {
         ret.id = ret._id;

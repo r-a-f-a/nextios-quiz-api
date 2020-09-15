@@ -5,7 +5,7 @@ import { authMiddleware } from '@src/middlewares/auth';
 
 @Controller('questions')
 @ClassMiddleware(authMiddleware)
-export class QuestionController {
+export class QuestionsController {
     @Get('')
     public async list(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {

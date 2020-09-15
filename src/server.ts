@@ -5,8 +5,9 @@ import { Application } from 'express';
 import * as database from './database';
 import cors  from 'cors';
 
-import { QuestionController } from '@src/controllers/questions';
+import { QuestionsController } from '@src/controllers/questions';
 import { UsersController } from './controllers/users';
+import { EventsController } from './controllers/events';
 
 export class SetupServer extends Server {
     constructor (private port: Number = 3000) {
@@ -25,12 +26,14 @@ export class SetupServer extends Server {
     }
 
     private setupControllers(): void {
-        const questionController = new QuestionController();
+        const questionsController = new QuestionsController();
         const usersController = new UsersController();
+        const eventsController = new EventsController();
 
         this.addControllers([
-            questionController,
-            usersController
+            questionsController,
+            usersController,
+            eventsController
         ]);
     }
 
