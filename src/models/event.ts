@@ -1,9 +1,9 @@
 import mongoose, { Document, Model } from "mongoose";
 
 export interface EventData {
-    type: string;
+    type: string; // START / RESPONSE
     questionId: mongoose.Types.ObjectId;
-    response: object;
+    response?: object;
 }
 
 export interface Event {

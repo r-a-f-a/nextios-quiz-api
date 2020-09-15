@@ -1,24 +1,53 @@
 import mongoose, { Document, Model } from "mongoose";
 
+export interface Props {
+    [index: number]: string
+}
+
+export interface ComponentScript {
+    props: Array<Props>;
+    data: Function;
+    created: Function;
+    mounted: Function;
+    computed: object;
+    methods: object;
+}
+
+export interface Component {
+    name: string;
+    template: string;
+    script: ComponentScript;
+    style: string;
+}
+
 export interface Question {
     _id?: string;
     title: string;
-    order?: number;
-    component: object;
+    order: number;
+    weight: number;
     status: boolean;
+    component: Component;
 }
 
 const schema = new mongoose.Schema(
     {
         title: { type: String, required: true },
-        order: { type: Number, required: false },
+        order: { type: Number, required: true },
+        weight: { type: Number, required: true },
+        status: { type: Boolean, default: true }, 
         component: {
+            template: { type: String, required: true },
             name: { type: String, required: true },
-            data: { type: Object, required: true },
-            created: { type: Object, required: true },
-            mounted: { type: Object, required: true }
-        },
-        status: Boolean
+            script: {
+                props: { type: Array, required: false },
+                data: { type: Function, required: false },
+                created: { type: Function, required: false },
+                mounted: { type: Function, required: false },
+                computed: { type: Object, required: false },
+                methods: { type: Object, required: false }
+            },
+            style: { type: String, required: true }
+        }
     },
     {
         timestamps: true,

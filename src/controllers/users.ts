@@ -23,6 +23,9 @@ export class UsersController {
     @Post('')
     public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
+            const exists = await User.findOne({ email: req.payload.email });
+            if (exists) res.status(200).send({ code: 200, result: exists });
+
             const user = new User({ email: req.payload.email });
             const result = await user.save();
             res.status(201).send({ code: 201, result: result });
@@ -93,7 +96,7 @@ export class UsersController {
         try {
             const user = await User.findById(req.payload.userId);
             if (!user) res.status(400).send({ code: 400, error: 'USER_NOT_FOUND' });
-            const verification = await Verification.findOne({ userId: req.payload.userId, code: req.payload.code, verificated: false } );
+            const verification = await Verification.findOne({ userId: req.payload.userId, code: req.payload.code } );
             if (!verification) res.status(400).send({ code: 400, error: 'CODE_VALIDATION_DENIED' });
             const updated = await Verification.findByIdAndUpdate(verification?.id, { verificated: true });
             res.status(200).send({ code: 200, result: true });
