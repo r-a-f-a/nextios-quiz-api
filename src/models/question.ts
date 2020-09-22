@@ -6,9 +6,9 @@ export interface Props {
 
 export interface ComponentScript {
     props: Array<Props>;
-    data: Function;
-    created: Function;
-    mounted: Function;
+    data: Object;
+    created: Object;
+    mounted: Object;
     computed: object;
     methods: object;
 }
@@ -40,9 +40,9 @@ const schema = new mongoose.Schema(
             name: { type: String, required: true },
             script: {
                 props: { type: Array, required: false },
-                data: { type: Function, required: false },
-                created: { type: Function, required: false },
-                mounted: { type: Function, required: false },
+                data: { type: Object, required: false },
+                created: { type: Object, required: false },
+                mounted: { type: Object, required: false },
                 computed: { type: Object, required: false },
                 methods: { type: Object, required: false }
             },
