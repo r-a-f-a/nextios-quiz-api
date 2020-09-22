@@ -71,12 +71,18 @@ export class UsersController {
     public async sendVerificationCode (req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const user = await User.findById(req.payload.userId);
-            if (!user) res.status(400).send({ code: 400, error: 'USER_NOT_FOUND' });
+            if (!user) {
+                res.status(400).send({ code: 400, error: 'USER_NOT_FOUND' });
+                return;
+            }
             const userId = req.payload.userId;
             const code = GeneratorService.generateToken();
             const verificationCode = new Verification({ code, userId });
             const result = await verificationCode.save();
-            if (!result) res.status(500).send({ code: 500 });
+            if (!result) {
+                res.status(500).send({ code: 500 });
+                return;
+            }
             const mail = new MailService();
             await mail.send({
                 from: "comunicacaointerna@locaweb.com.br",
