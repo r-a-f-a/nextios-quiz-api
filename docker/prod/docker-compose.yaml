@@ -2,8 +2,8 @@ version: '2'
 services:
   quiz-api-prod:
     build:
-      context: .
-      dockerfile: ./Dockerfile
+      context: ../../.
+      dockerfile: ./docker/prod/Dockerfile
     volumes:
       - /etc/localtime:/etc/localtime
     container_name: quiz-api-prod
