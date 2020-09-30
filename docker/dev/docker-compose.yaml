@@ -1,0 +1,44 @@
+version: '2'
+services:
+  quiz-api-dev:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ../../.:/code/
+      - /etc/localtime:/etc/localtime
+    container_name: quiz-api-dev
+    command: yarn start:dev
+    environment:
+      - TERM=xterm-256color
+    privileged: true
+    expose:
+      - "80"
+    ports:
+      - "8501:8080"
+    links:
+      - mongo-dev
+    dns:
+      - 8.8.8.8
+    networks:
+      - default
+    logging:
+      options:
+        max-size: "500m"
+        max-file: "2"
+  mongo-dev:
+    image: mongo:4.0
+    container_name: mongo-dev
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: core
+      MONGO_INITDB_ROOT_PASSWORD: q1w2e3r4
+    volumes:
+      - /var/mongo/quiz-api-dev:/data/db
+    ports:
+      - "27018:27017"
+    expose:
+      - "27017"
+    networks:
+      - default
+networks:
+  default:
