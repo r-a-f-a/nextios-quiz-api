@@ -5,6 +5,7 @@ services:
       context: ../../.
       dockerfile: ./docker/prod/Dockerfile
     volumes:
+      - ../../.:/code/
       - /etc/localtime:/etc/localtime
     container_name: quiz-api-prod
     command: npm run start
