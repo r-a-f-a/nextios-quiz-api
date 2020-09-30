@@ -1,0 +1,44 @@
+version: '2'
+services:
+  quiz-api-prod:
+    build:
+      context: ../../.
+      dockerfile: ./docker/prod/Dockerfile
+    volumes:
+      - /etc/localtime:/etc/localtime
+    container_name: quiz-api-prod
+    command: npm run start
+    networks:
+      - quiz-nextios-network
+    environment:
+      - APP_ENV=production
+      - TERM=xterm-256color
+    privileged: true
+    links:
+      - mongo-prod
+    dns:
+      - 8.8.8.8
+    expose:
+      - "8000"
+      - "443"
+    ports:
+      - "8000:8080"
+      - "443:443"
+  mongo-prod:
+    image: mongo:4.0
+    container_name: mongo-prod
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: quiz-nextios
+      MONGO_INITDB_ROOT_PASSWORD: q1w2e3r4
+    volumes:
+      - mongo:/data/db
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    networks:
+      - quiz-nextios-network
+networks:
+  quiz-nextios-network:
+volumes:
+  mongo:
