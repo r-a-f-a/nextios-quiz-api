@@ -12,6 +12,7 @@ services:
     networks:
       - quiz-nextios-network
     environment:
+      - NODE_ENV=production
       - APP_ENV=production
       - TERM=xterm-256color
     privileged: true
@@ -29,7 +30,7 @@ services:
     image: mongo:4.0
     container_name: mongo-prod
     environment:
-      MONGO_INITDB_ROOT_USERNAME: quiz-nextios
+      MONGO_INITDB_ROOT_USERNAME: nextios
       MONGO_INITDB_ROOT_PASSWORD: q1w2e3r4
     volumes:
       - mongo:/data/db
