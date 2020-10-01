@@ -17,7 +17,7 @@ services:
       - TERM=xterm-256color
     privileged: true
     links:
-      - mongo-prod
+      - mongo-nextios-prod
     dns:
       - 8.8.8.8
     expose:
@@ -26,14 +26,14 @@ services:
     ports:
       - "8000:8080"
       - "443:443"
-  mongo-prod:
+  mongo-nextios-prod:
     image: mongo:4.0
-    container_name: mongo-prod
+    container_name: mongo-nextios-prod
     environment:
       MONGO_INITDB_ROOT_USERNAME: nextios
       MONGO_INITDB_ROOT_PASSWORD: q1w2e3r4
     volumes:
-      - mongo:/data/db
+      - mongo-nextios:/data/db
     ports:
       - "27017:27017"
     expose:
@@ -43,4 +43,4 @@ services:
 networks:
   quiz-nextios-network:
 volumes:
-  mongo:
+  mongo-nextios:
