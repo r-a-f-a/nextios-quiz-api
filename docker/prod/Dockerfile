@@ -7,10 +7,10 @@ RUN mkdir /code
 
 WORKDIR /code
 
-ADD . /code
+# ADD . /code
 
-RUN npm install
+# RUN npm i
 
-RUN npm run build
+# RUN npm run build
 
 EXPOSE 80

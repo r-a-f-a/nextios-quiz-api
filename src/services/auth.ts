@@ -1,6 +1,5 @@
 import config from 'config';
 import jwt from 'jsonwebtoken';
-import { User } from '@src/models/users';
 import mongoose from 'mongoose';
 
 

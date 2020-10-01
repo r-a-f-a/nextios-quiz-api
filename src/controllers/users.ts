@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, ClassMiddleware } from '@overnightjs/core';
 import { Request, Response, NextFunction } from 'express';
-import { User } from '@src/models/users';
-import { Verification } from '@src/models/verification';
-import { authMiddleware } from '@src/middlewares/auth';
-import GeneratorService from '@src/services/generator';
-import MailService from '@src/services/mail';
+import { User } from '../models/users';
+import { Verification } from '../models/verification';
+import { authMiddleware } from '../middlewares/auth';
+import GeneratorService from '../services/generator';
+import MailService from '../services/mail';
 import fs from 'fs';
 import path from 'path';
 

@@ -1,8 +1,0 @@
-{
-    "App": {
-        "database": {
-            "mongoUrl": "mongodb://177.153.231.34/nextios"
-        },
-        "resources": {}
-    }
-}

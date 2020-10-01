@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Put, Delete, ClassMiddleware } from '@overnightjs/core';
 import { Request, Response, NextFunction } from 'express';
-import { Question } from '@src/models/question';
-import { authMiddleware } from '@src/middlewares/auth';
+import { Question } from '../models/question';
+import { authMiddleware } from '../middlewares/auth';
 
 @Controller('questions')
 @ClassMiddleware(authMiddleware)

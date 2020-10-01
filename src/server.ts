@@ -5,7 +5,7 @@ import { Application } from 'express';
 import * as database from './database';
 import cors  from 'cors';
 
-import { QuestionsController } from '@src/controllers/questions';
+import { QuestionsController } from './controllers/questions';
 import { UsersController } from './controllers/users';
 import { EventsController } from './controllers/events';
 
