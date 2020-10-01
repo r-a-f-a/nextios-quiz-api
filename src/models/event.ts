@@ -1,24 +1,19 @@
 import mongoose, { Document, Model } from "mongoose";
 
-export interface EventData {
-    type: string; // START / RESPONSE
-    questionId: mongoose.Types.ObjectId;
-    response?: object;
-}
-
 export interface Event {
     _id?: string;
-    data: EventData;
+    type: string; // QUIZ_STARTED / QUESTION_STARTED / QUESTION_ANSWERED / QUIZ_FINISHED
+    userId: mongoose.Types.ObjectId,
+    data?: Object;
     createdAt: Date;
     updatedAt: Date;
 }
 
 const schema = new mongoose.Schema(
     {
-        data: {
-            type: { type: String, required: true },
-            questionId: { type: mongoose.Types.ObjectId, required: false }
-        }
+        type: { type: String, required: true },
+        userId: { type: mongoose.Types.ObjectId, required: true },
+        data: { type: Object, required: false }
     },
     {
         timestamps: true,

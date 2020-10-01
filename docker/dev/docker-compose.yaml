@@ -26,11 +26,11 @@ services:
       options:
         max-size: "500m"
         max-file: "2"
-  mongo-dev:
+  mongo-nextios-dev:
     image: mongo:4.0
-    container_name: mongo-dev
+    container_name: mongo-nextios-dev
     environment:
-      MONGO_INITDB_ROOT_USERNAME: core
+      MONGO_INITDB_ROOT_USERNAME: nextios
       MONGO_INITDB_ROOT_PASSWORD: q1w2e3r4
     volumes:
       - /var/mongo/quiz-api-dev:/data/db
