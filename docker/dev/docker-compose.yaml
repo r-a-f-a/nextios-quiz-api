@@ -17,7 +17,7 @@ services:
     ports:
       - "8501:8080"
     links:
-      - mongo-dev
+      - mongo-nextios-dev
     dns:
       - 8.8.8.8
     networks:

@@ -7,6 +7,7 @@ import GeneratorService from '../services/generator';
 import MailService from '../services/mail';
 import fs from 'fs';
 import path from 'path';
+import { template } from '../templates/code';
 
 @Controller('users')
 @ClassMiddleware(authMiddleware)
@@ -86,13 +87,13 @@ export class UsersController {
           return;
         }
         const mail = new MailService();
-        let template = fs.readFileSync(path.resolve(__dirname, '../templates' ,'code.txt')).toString().replace(/\{code\}/gi, code)
+        let html = template.replace(/\{code\}/gi, code);
         // console.log('TEMPLATE', template)
         const send = await mail.send({
           from: "comunicacaointerna@locaweb.com.br",
           to: user?.email,
           subject: "Quiz NEXTIOS: Código de verificação",
-          html: template
+          html: html
         });
         console.log('SEND', send)
         res.status?.(201).send({ code: 201, result: 'VERIFICATION_CODE_SENDED' });

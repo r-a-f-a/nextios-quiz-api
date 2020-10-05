@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+export const template = `<!DOCTYPE html>
 <html>
 <head>
 
@@ -237,4 +237,4 @@
   <!-- end body -->
 
 </body>
-</html>
+</html>`
