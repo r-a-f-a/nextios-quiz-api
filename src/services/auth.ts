@@ -2,6 +2,9 @@ import config from 'config';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
+export interface Data {
+  question: number;
+}
 
 export interface DecodedPayload {
   email?: string,
@@ -10,6 +13,8 @@ export interface DecodedPayload {
   userId?: mongoose.Types.ObjectId;
   filter?: object;
   code?: string;
+  data?: Data;
+  type?: string;
 }
 
 export default class AuthService {

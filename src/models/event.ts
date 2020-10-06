@@ -13,7 +13,10 @@ const schema = new mongoose.Schema(
     {
         type: { type: String, required: true },
         userId: { type: mongoose.Types.ObjectId, required: true },
-        data: { type: Object, required: false }
+        data: {
+            question: { type: Object, required: false },
+            response: { type: Object, required: false }
+        }
     },
     {
         timestamps: true,

@@ -5,7 +5,7 @@
             "key": "a"
         },
         "database": {
-            "mongoUrl": "mongodb://177.153.231.34/nextios"
+            "mongoUrl": "mongodb://nextios:q1w2e3r4@quiznextios.com.br:27017/quiz?authSource=admin"
         },
         "smtp": {
             "host": "smtplw.com.br",
