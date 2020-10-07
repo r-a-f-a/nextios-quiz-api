@@ -9,6 +9,7 @@ import { QuestionsController } from './controllers/questions';
 import { UsersController } from './controllers/users';
 import { EventsController } from './controllers/events';
 import { ProgressController } from './controllers/progress';
+import { ResultsController } from './controllers/results';
 
 export class SetupServer extends Server {
     constructor (private port: Number = 3000) {
@@ -31,12 +32,14 @@ export class SetupServer extends Server {
         const usersController = new UsersController();
         const eventsController = new EventsController();
         const progressController = new ProgressController();
+        const resultsController = new ResultsController();
 
         this.addControllers([
             questionsController,
             usersController,
             eventsController,
-            progressController
+            progressController,
+            resultsController
         ]);
     }
 

@@ -3,7 +3,7 @@ import mongoose, { Document, Model } from "mongoose";
 export interface Event {
     _id?: string;
     type: string; // QUIZ_STARTED / QUESTION_STARTED / QUESTION_ANSWERED / QUIZ_FINISHED
-    userId: mongoose.Types.ObjectId,
+    userId: mongoose.Types.ObjectId;
     data?: Object;
     createdAt: Date;
     updatedAt: Date;
