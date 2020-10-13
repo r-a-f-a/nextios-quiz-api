@@ -1,26 +1,37 @@
 import mongoose, { Document, Model } from "mongoose";
 
+export interface Hits {
+  question: number;
+  duration: number;
+}
+
 export interface Result {
   _id?: string;
   userId: mongoose.Types.ObjectId;
-  score: number;
-  duration: number;
+  hits: Array<Hits>;
+  mistakes: Array<Hits>;
   createdAt: Date;
   updatedAt: Date;
 }
 
+// const schemaHits = new mongoose.Schema(
+//   {
+//     question: { type: Number, required: false },
+//     duration: { type: Number, required: false }
+//   }
+// );
+
 const schema = new mongoose.Schema(
   {
-    type: { type: String, required: true },
     userId: { type: mongoose.Types.ObjectId, required: true },
-    data: {
-      question: { type: Object, required: false },
-      response: { type: Object, required: false }
-    }
+    // hits: { type: [schemaHits], required: false },
+    // mistakes: { type: [schemaHits], required: false }
+    hits: { type: Array, required: false },
+    mistakes: { type: Array, required: false }
   },
   {
     timestamps: true,
-    collection: 'events',
+    collection: 'results',
     toJSON: {
       transform: (_, ret): void => {
         ret.id = ret._id;

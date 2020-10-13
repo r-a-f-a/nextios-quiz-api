@@ -7,7 +7,7 @@ import { authMiddleware } from '../middlewares/auth';
 @ClassMiddleware(authMiddleware)
 export class EventsController {
   @Post('')
-  public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
+  public async create(req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
       console.log('PAYLOAD', req.payload);
       // if (req.payload.type === 'QUESTION_STARTED' && req.payload.data) {
@@ -24,13 +24,23 @@ export class EventsController {
       //   }
       // }
 
+      const check = await Event.find({
+        'userId': req.payload.userId,
+        'type': req.payload.type,
+        'data.question': req.payload.data?.question
+      });
+
+      if (check) {
+        return res.status(201).send({ code: 200, result: check});
+      }
+
       const newEvent = req.payload;
       const event = new Event(newEvent);
       const result = await event.save();
-      res.status(201).send({ code: 201, result: result});
+      return res.status(201).send({ code: 201, result: result});
     } catch (error) {
       console.log('ERROR', error);
-      res.status?.(401).send({ code: 401, error: error.message });
+      return res.status?.(401).send({ code: 401, error: error.message });
     }
   }
 }

@@ -1,0 +1,33 @@
+{
+    "1": { "2003" : "A", "2014" : "B", "2017" : "C", "2018" : "D", "2020" : "E" },
+    "2": [ "Serviços, Serviços de Infraestrutura, Soluções de Negócios e APM" ],
+    "3": { "0" : "aws como cloud pública vmware (antigo ed) como cloud privada/datacenter híbrido" },
+    "4": {
+      "0" : "pessoas são nosso código fonte.",
+      "1" : "parceiros na tecnologia, companheiros reais.",
+      "2" : "desenvolvemos um futuro melhor.",
+      "3" : "focados na melhor solução."
+    },
+    "5": [ 
+      { "word" : "FINANÇAS", "done" : true }, 
+      { "word" : "MANUFATURA", "done" : true }, 
+      { "word" : "GOVERNO", "done" : true }, 
+      { "word" : "EDUCAÇÃO", "done" : true }, 
+      { "word" : "GÁS", "done" : true }, 
+      { "word" : "ÓLEO", "done" : true }, 
+      { "word" : "AUTOMOTIVA", "done" : true }
+    ],
+    "6": [ 
+      "Atendimento de Excelência", 
+      "Inteligência agregada à capacidade de execução", 
+      "Tecnologia é meio, solução é o fim", 
+      "Papel de construtores"
+    ],
+    "7": [ 
+      "Além de uma nova marca, somos uma nova unidade de negócios com posicionamento, processos internos e portfólio de apresentação. A nova marca facilita a representação da nossa transformação para o mercado.", 
+      "Oferta é muito diferente do varejo"
+    ],
+    "8": [ "Parceiro Advanced, com competências MSP - Managed Service Provider e Storage" ],
+    "9": { "0" : "seremos reconhecidos pelo mercado parceiros e profissionais de tecnologia como o mais competente provedor de soluções e serviços gerenciados do país." },
+    "10": [ "empoderar", "pessoas", "e", "negócios", "por meio", "da", "tecnologia" ]
+  }
