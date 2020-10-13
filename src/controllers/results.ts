@@ -25,7 +25,7 @@ export class ResultsController {
       const answereds = await this.getQuizAnswereds(userId);
 
       if (starts.length === 0 || answereds.length === 0) {
-        return res.status(201).send({ code: 200, result: exists });
+        return res.status(204).send({ code: 204, result: 'NO_CONTENT' });
       }
 
       let hits: Array<object> = [];
