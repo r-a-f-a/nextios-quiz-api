@@ -28,6 +28,10 @@ export class ResultsController {
         return res.status(204).send({ code: 204, result: 'NO_CONTENT' });
       }
 
+      if (starts.length < 10 || answereds.length < 10) {
+        return res.status(204).send({ code: 204, result: 'NO_CONTENT' });
+      }
+
       let hits: Array<object> = [];
       let mistakes: Array<object> = [];
 

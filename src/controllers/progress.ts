@@ -10,12 +10,11 @@ export class ProgressController {
   public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const result = await Event.findOne({
-      'userId': req.payload.userId,
-      'type': 'QUESTION_ANSWERED',
-      'data.question': req.payload.data?.question? - 1: Number
+        'userId': req.payload.userId,
+        'type': 'QUESTION_ANSWERED'
       }).sort({
-      'data.question': 'desc',
-      'createdAt': 'desc'
+        'data.question': 'desc',
+        'createdAt': 'desc'
       });
       res.status(201).send({ code: 200, result: result});
     } catch (error) {
