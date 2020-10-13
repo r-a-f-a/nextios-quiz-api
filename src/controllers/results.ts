@@ -32,6 +32,7 @@ export class ResultsController {
         return res.status(204).send({ code: 204, result: 'NO_CONTENT' });
       }
 
+      let duration: number = 0;
       let hits: Array<object> = [];
       let mistakes: Array<object> = [];
 
@@ -39,6 +40,7 @@ export class ResultsController {
         const diff = this.getDurationQuestion(start.createdAt.toISOString(), answereds[index].createdAt.toISOString());
         const isHit = Questions().compare(answereds[index].data.question, JSON.stringify(answereds[index].data.response));
         let dataQuestion = { question: index + 1, duration: diff };
+        duration = diff + duration;
         if (isHit) {
           hits.push(dataQuestion);
         } else {
@@ -46,7 +48,7 @@ export class ResultsController {
         }
       });
 
-      let newData = { userId, hits, mistakes };
+      let newData = { userId, hits, mistakes, duration };
 
       let newResult = new Result(newData);
       const result = await newResult.save();

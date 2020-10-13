@@ -10,6 +10,7 @@ export interface Result {
   userId: mongoose.Types.ObjectId;
   hits: Array<Hits>;
   mistakes: Array<Hits>;
+  duration: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -27,7 +28,8 @@ const schema = new mongoose.Schema(
     // hits: { type: [schemaHits], required: false },
     // mistakes: { type: [schemaHits], required: false }
     hits: { type: Array, required: false },
-    mistakes: { type: Array, required: false }
+    mistakes: { type: Array, required: false },
+    duration: { type: Number, required: false }
   },
   {
     timestamps: true,
