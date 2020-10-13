@@ -16,7 +16,12 @@ export class ProgressController {
         'data.question': 'desc',
         'createdAt': 'desc'
       });
-      res.status(201).send({ code: 200, result: result});
+
+      if (!result) {
+        res.status(204).send({ code: 204, result: 'NO_CONTENT' });
+      }
+
+      res.status(201).send({ code: 200, result: result });
     } catch (error) {
       console.log('ERROR', error);
       res.status?.(401).send({ code: 401, error: error.message });
