@@ -24,6 +24,10 @@ export class ResultsController {
       const starts = await this.getQuizStarteds(userId);
       const answereds = await this.getQuizAnswereds(userId);
 
+      if (starts.length && answereds.length) {
+        return res.status(201).send({ code: 200, result: exists });
+      }
+
       let hits: Array<object> = [];
       let mistakes: Array<object> = [];
 
@@ -51,12 +55,12 @@ export class ResultsController {
   }
 
   private async getQuizStarteds(userId: Types.ObjectId): Promise<Array<EventModel>> {
-    const starts = await Event.find({ 'userId': userId, 'type': 'QUESTION_STARTED' });
+    const starts: EventModel[] = await Event.find({ 'userId': userId, 'type': 'QUESTION_STARTED' });
     return starts;
   }
 
   private async getQuizAnswereds(userId: Types.ObjectId): Promise<Array<EventModel>>  {
-    const answereds = await Event.find({ 'userId': userId, 'type': 'QUESTION_ANSWERED' });
+    const answereds: EventModel[] = await Event.find({ 'userId': userId, 'type': 'QUESTION_ANSWERED' });
     return answereds;
   }
 

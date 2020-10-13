@@ -30,8 +30,8 @@ export class EventsController {
         'data.question': req.payload.data?.question
       });
 
-      if (check) {
-        return res.status(201).send({ code: 200, result: check});
+      if (check.length) {
+        return res.status(200).send({ code: 200, result: check});
       }
 
       const newEvent = req.payload;

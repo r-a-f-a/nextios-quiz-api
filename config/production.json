@@ -1,11 +1,11 @@
 {
-    "App": {
-        "port": 8080,
-        "auth": {
-            "key": "ozNLg8yWxihZRrZdWNYXqHL1U4nATVry85tzSS3xVOXUjYUDcveVqSThlqhOyYk"
-        },
-        "database": {
-            "mongoUrl": "mongodb://nextios:q1w2e3r4@mongo-nextios-prod/quiz?authSource=admin"
-        }
+  "App": {
+    "port": 8080,
+    "auth": {
+      "key": "ozNLg8yWxihZRrZdWNYXqHL1U4nATVry85tzSS3xVOXUjYUDcveVqSThlqhOyYk"
+    },
+    "database": {
+      "mongoUrl": "mongodb://nextios:q1w2e3r4@mongo-nextios-prod/quiz?authSource=admin"
     }
+  }
 }
