@@ -24,7 +24,7 @@ export class ResultsController {
       const starts = await this.getQuizStarteds(userId);
       const answereds = await this.getQuizAnswereds(userId);
 
-      if (starts.length && answereds.length) {
+      if (starts.length === 0 || answereds.length === 0) {
         return res.status(201).send({ code: 200, result: exists });
       }
 
