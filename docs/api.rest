@@ -1,0 +1,38 @@
+@hostname = localhost
+@port = 8501
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+GET http://{{host}}/users HTTP/1.1
+content-type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.UnP25ddNPCSH2liwMMda7naPmIY0bOTXKoGWOpysVao
+
+###
+
+POST http://{{host}}/users HTTP/1.1
+content-type: {{contentType}}
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pY2hlbC5saW1hQGxvY2F3ZWIuY29tLmJyIn0.ZenHhYmswyDFegKz_kQsR3FjDs-PhLT1G7jnhJlFjOU
+
+###
+
+POST http://{{host}}/events HTTP/1.1
+content-type: {{contentType}}
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiMmI2MTFjY2ZlMjAwMTJmYzNhYmEiLCJ0eXBlIjoiUVVFU1RJT05fU1RBUlRFRCIsImRhdGEiOnsicXVlc3Rpb24iOjEwfX0.SyU12pRQKbyqvHJ_GbkCDFDcfcDTCAINhW6GkDuHfYY
+
+###
+
+POST http://{{host}}/events HTTP/1.1
+content-type: {{contentType}}
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiMmI2MTFjY2ZlMjAwMTJmYzNhYmEiLCJ0eXBlIjoiUVVFU1RJT05fQU5TV0VSRUQiLCJkYXRhIjp7InF1ZXN0aW9uIjoxMCwicmVzcG9uc2UiOnt9fX0.VtNR4UX551eYBBI65KGVyvIr5MGkl1nJ8pTGX-mGfgI
+
+###
+
+GET http://{{host}}/progress HTTP/1.1
+content-type: {{contentType}}
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Zjg2N2VlODEzM2M2NDAwMTkxMDAxOGEifQ.NnOqRwORydZBx0rPladBA2kEXKxewj_QDDnd3765I0M
+
+###
+
+GET http://{{host}}/results HTTP/1.1
+content-type: {{contentType}}
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Zjg2MGQwNDI1ZjIwOTAwMTM2MmUzZWMifQ.4YEhU0wAu3Q_l5AlnNBhLagfdhZJWLXuiZVCC96YB_E
